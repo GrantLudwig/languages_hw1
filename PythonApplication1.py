@@ -8,9 +8,11 @@ def processFile(fileName):
         stuLine = line.split()
         stuTuple = (stuLine[0], stuLine[1], stuLine[2])
         stuList = [stuTuple]
+        clasList = []
         for i in range(0, int(stuLine[3])):
             classtuple = (stuLine[4 + 4*i], stuLine[5 + 4*i], stuLine[6 + 4*i], stuLine[7 + 4*i])
-            stuList.append(classtuple)
+            clasList.append(classtuple)
+        stuList.append(clasList)
         list.append(stuList)
     return list
 
@@ -52,10 +54,15 @@ def createStudentDict(list):
             dict[student[0][0]] = totalGp / numCreds
     return dict
 
+def createRoster(list, dep, classNum):
+    #for student in list:
+    return 0
+
+
         
 #driver code
 fileName = sys.argv[1]
 studentList = processFile(fileName)
 print(studentList)
-dict = createStudentDict(studentList)
-print(dict)
+#dict = createStudentDict(studentList)
+#print(dict)
