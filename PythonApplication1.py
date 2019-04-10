@@ -16,38 +16,40 @@ def processFile(fileName):
         list.append(stuList)
     return list
 
+def getGrade(letter):
+    if letter == "A":
+        return 4.0
+    elif letter == "A-":
+        return 3.7
+    elif letter == "B+":
+        return 3.3
+    elif letter == "B":
+        return 3.0
+    elif letter == "B-":
+        return 2.7
+    elif letter == "C+":
+        return 2.3
+    elif letter == "C":
+        return 2.0
+    elif letter == "C-":
+        return 1.7
+    elif letter == "D+":
+        return 1.3
+    elif letter == "D":
+        return 1.0
+    elif letter == "D-":
+        return 0.7
+    else:
+        return 0.0
+
 def createStudentDict(list):
     dict = {}
     for student in list:
         totalGp = 0.0
         numCreds = 0
-        for tuple in student:
-            if len(tuple) == 4:
-                numCreds += int(tuple[2])
-                gp = 0.0
-                if tuple[3] == "A":
-                    gp = 4.0
-                elif tuple[3] == "A-":
-                    gp = 3.7
-                elif tuple[3] == "B+":
-                    gp = 3.3
-                elif tuple[3] == "B":
-                    gp = 3.0
-                elif tuple[3] == "B-":
-                    gp = 2.7
-                elif tuple[3] == "C+":
-                    gp = 2.3
-                elif tuple[3] == "C":
-                    gp = 2.0
-                elif tuple[3] == "C-":
-                    gp = 1.7
-                elif tuple[3] == "D+":
-                    gp = 1.3
-                elif tuple[3] == "D":
-                    gp = 1.0
-                elif tuple[3] == "D-":
-                    gp = 0.7
-                totalGp += gp * int(tuple[2])
+        for tuple in student[1]:
+            numCreds += int(tuple[2])
+            totalGp += getGrade(tuple[3]) * int(tuple[2])
         if numCreds == 0:
             dict[student[0][0]] = 0.0
         else:
@@ -64,5 +66,5 @@ def createRoster(list, dep, classNum):
 fileName = sys.argv[1]
 studentList = processFile(fileName)
 print(studentList)
-#dict = createStudentDict(studentList)
-#print(dict)
+dict = createStudentDict(studentList)
+print(dict)
