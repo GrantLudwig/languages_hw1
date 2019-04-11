@@ -10,7 +10,7 @@ def processFile(fileName):
         stuList = [stuTuple]
         clasList = []
         for i in range(0, int(stuLine[3])):
-            classtuple = (stuLine[4 + 4*i], stuLine[5 + 4*i], stuLine[6 + 4*i], stuLine[7 + 4*i])
+            classtuple = (stuLine[4 + 4*i], int(stuLine[5 + 4*i]), int(stuLine[6 + 4*i]), stuLine[7 + 4*i])
             clasList.append(classtuple)
         stuList.append(clasList)
         list.append(stuList)
@@ -48,8 +48,8 @@ def createStudentDict(list):
         totalGp = 0.0
         numCreds = 0
         for tuple in student[1]:
-            numCreds += int(tuple[2])
-            totalGp += getGrade(tuple[3]) * int(tuple[2])
+            numCreds += tuple[2]
+            totalGp += getGrade(tuple[3]) * tuple[2]
         if numCreds == 0:
             dict[student[0][0]] = 0.0
         else:
@@ -69,7 +69,7 @@ def createCourseSet(list):
     courseSet = set()
     for student in list:
         for tuple in student[1]:
-            courseSet.add(tuple[0] + " " + tuple[1])
+            courseSet.add(tuple[0] + " " + str(tuple[1]))
     return courseSet
 
 def printStudents(list):
@@ -86,13 +86,19 @@ def printStudents(list):
 #driver code
 fileName = sys.argv[1]
 studentList = processFile(fileName)
+print("\n")
 print(studentList)
+print("\n")
 dict = createStudentDict(studentList)
 print(dict)
-CPSClist = createRoster(studentList, "CPSC", "1420")
+print("\n")
+CPSClist = createRoster(studentList, "CPSC", 1420)
 print(CPSClist)
-mathList = createRoster(studentList, "Math", "2340")
+print("\n")
+mathList = createRoster(studentList, "Math", 2340)
 print(mathList)
+print("\n")
 set = createCourseSet(studentList)
 print(set)
+print("\n")
 printStudents(studentList)
