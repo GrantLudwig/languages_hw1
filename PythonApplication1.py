@@ -71,6 +71,17 @@ def createCourseSet(list):
         for tuple in student[1]:
             courseSet.add(tuple[0] + " " + tuple[1])
     return courseSet
+
+def printStudents(list):
+    dict = createStudentDict(list)
+    list = sorted(list)
+    for student in list:
+        output = ""
+        for studInfo in student[0]:
+            output = output + str(studInfo) + " "
+        output = output +  str(dict[student[0][0]])
+        print(output)
+
    
 #driver code
 fileName = sys.argv[1]
@@ -84,3 +95,4 @@ mathList = createRoster(studentList, "Math", "2340")
 print(mathList)
 set = createCourseSet(studentList)
 print(set)
+printStudents(studentList)
