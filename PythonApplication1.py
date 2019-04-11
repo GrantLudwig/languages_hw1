@@ -6,7 +6,7 @@ def processFile(fileName):
     for line in open(fileName):
         line = line.rstrip()
         stuLine = line.split()
-        stuTuple = (stuLine[0], stuLine[1], stuLine[2])
+        stuTuple = (int(stuLine[0]), stuLine[1], stuLine[2])
         stuList = [stuTuple]
         clasList = []
         for i in range(0, int(stuLine[3])):
@@ -57,14 +57,21 @@ def createStudentDict(list):
     return dict
 
 def createRoster(list, dep, classNum):
-    #for student in list:
-    return 0
-
-
-        
+    returnList = []
+    for student in list:
+        for tuple in student[1]:
+            if dep == tuple[0] and classNum == tuple[1]:
+                studInfo = (student[0][0], student[0][1], student[0][2], tuple[3])
+                returnList.append(studInfo)
+    return returnList
+   
 #driver code
 fileName = sys.argv[1]
 studentList = processFile(fileName)
 print(studentList)
 dict = createStudentDict(studentList)
 print(dict)
+CPSClist = createRoster(studentList, "CPSC", "1420")
+print(CPSClist)
+mathList = createRoster(studentList, "Math", "2340")
+print(mathList)
