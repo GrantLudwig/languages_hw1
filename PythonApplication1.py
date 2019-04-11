@@ -64,6 +64,13 @@ def createRoster(list, dep, classNum):
                 studInfo = (student[0][0], student[0][1], student[0][2], tuple[3])
                 returnList.append(studInfo)
     return returnList
+
+def createCourseSet(list):
+    courseSet = set()
+    for student in list:
+        for tuple in student[1]:
+            courseSet.add(tuple[0] + " " + tuple[1])
+    return courseSet
    
 #driver code
 fileName = sys.argv[1]
@@ -75,3 +82,5 @@ CPSClist = createRoster(studentList, "CPSC", "1420")
 print(CPSClist)
 mathList = createRoster(studentList, "Math", "2340")
 print(mathList)
+set = createCourseSet(studentList)
+print(set)
