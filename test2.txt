@@ -1,0 +1,12 @@
+2233560 Grant Ludwig 5 CPSC 1420 5 A CPSC 1430 5 A Math 2340 4 A CPSC 4100 5 A Art 4000 3 A-
+4 John Smith 2 Phil 2010 3 A Phil 2020 3 B+
+0 Greg Boi 4 Phys 1020 5 B- Phys 1030 1 A Music 6789 2 B- Music 9000 6 C-
+45 Ben Ritz 1 CPSC 1420 5 D-
+100 Jane Doe 3 Math 2320 3 B+ Math 2340 4 C- CPSC 1420 5 C
+300 Ed Larson 2 Biol 1001 5 C Biol 1002 5 C+
+101 Rodney Ludwig 2 Math 2320 3 A- Math 2340 4 F
+1000 Jim Zettel 2 History 1000 3 B+ Lit 2050 3 A
+40000 Ben Adams 1 Law 5000 4 C
+157809 John Smith 0
+345631 Beth Sharlin 1 Art 4000 2 B+
+5642 Ed Larson 4 Phil 2010 3 A- Phil 2020 3 B+ Math 2320 3 D Math 2340 4 C+

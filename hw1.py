@@ -1,6 +1,10 @@
 
 import sys
 
+#returns a list in the following format:
+#   [[(student ID, first name, last name), 
+#   [(department, number, credits, letter grade),(another class), ...)]], 
+#   [another student info], ...]
 def processFile(fileName):
     list = []
     for line in open(fileName):
@@ -8,11 +12,14 @@ def processFile(fileName):
         stuLine = line.split()
         stuTuple = (int(stuLine[0]), stuLine[1], stuLine[2])
         stuList = [stuTuple]
-        clasList = []
+        classList = []
+        #generates a class tuple as such:
+            #(department, number, credits, letter grade)
+        #adds to the classList
         for i in range(0, int(stuLine[3])):
             classtuple = (stuLine[4 + 4*i], int(stuLine[5 + 4*i]), int(stuLine[6 + 4*i]), stuLine[7 + 4*i])
-            clasList.append(classtuple)
-        stuList.append(clasList)
+            classList.append(classtuple)
+        stuList.append(classList)
         list.append(stuList)
     return list
 
@@ -77,9 +84,10 @@ def printStudents(list):
     list = sorted(list)
     for student in list:
         output = ""
+        #goes through the student's info tuple
         for studInfo in student[0]:
-            output = output + str(studInfo) + " "
-        output = output +  str(dict[student[0][0]])
+            output += str(studInfo) + " "
+        output += str(dict[student[0][0]])
         print(output)
 
    
